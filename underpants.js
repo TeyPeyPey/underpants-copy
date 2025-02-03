@@ -21,6 +21,9 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
+_.identity = function (value){
+    return value;
+}
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +45,17 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function (value){
+    if (Array.isArray(value)){
+        return 'array';
+    } else if (value === null){
+        return 'null';
+    } else if (typeof value === 'object'){
+        return 'object';
+    } else {
+        return typeof value;
+    }
+}
 
 /** _.first
 * Arguments:
@@ -60,7 +74,20 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, number){
+    var output = [];
+    if(!Array.isArray(array)){
+        return output;
+    } else if (number === undefined || number === NaN){
+        return array[0];
+    } else if (number < 0){
+        return output;
+    } else if (number > array.length){
+        return array;
+    } else {
+        return array.slice(0, number);
+    }
+}
 
 /** _.last
 * Arguments:
@@ -79,7 +106,20 @@ var _ = {};
 *   _.last(["a", "b", "c"], 1) -> "c"
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
-
+_.last = function(array, number){
+    var output = [];
+    if(!Array.isArray(array)){
+        return output;
+    } else if (number === undefined || number === NaN){
+        return array[array.length - 1];
+    } else if (number < 0){
+        return output;
+    } else if (number > array.length){
+        return array;
+    } else {
+        return array.slice(array.length-number);
+    }
+}
 
 /** _.indexOf
 * Arguments:
@@ -96,7 +136,15 @@ var _ = {};
 *   _.indexOf(["a","b","c"], "c") -> 2
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
-
+_.indexOf = function(array, value){
+for (var i = 0; i < array.length; i++){
+    if (array[i] === value){
+        return array[i];
+    } else (array[i] !== value){
+        return -1;
+    }
+}
+}
 
 /** _.contains
 * Arguments:
@@ -208,7 +256,17 @@ var _ = {};
 * Examples:
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
-
+_.map = function(collection, func){
+const output = [];
+if (Array.isArray(collection)){
+    for (let i = 0; i < collection.length; i++){
+        const result = func(collection[i], i, collection);
+    }
+} else {
+   
+}
+return output;
+} 
 
 /** _.pluck
 * Arguments:

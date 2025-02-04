@@ -21,9 +21,9 @@ var _ = {};
 *   _.identity({a: "b"}) === {a: "b"}
 */
 
-_.identity = function (value){
+_.identity = function (value) {
     return value;
-}
+};
 
 /** _.typeOf
 * Arguments:
@@ -137,14 +137,14 @@ _.last = function(array, number){
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 _.indexOf = function(array, value){
-for (var i = 0; i < array.length; i++){
-    if (array[i] === value){
-        return array[i];
-    } else (array[i] !== value){
-        return -1;
+    for (var i = 0; i < array.length; i++){
+        if (array[i] === value){
+            return array[i];
+        } else (array[i] !== value) {
+            return -1;
+        }
     }
-}
-}
+};
 
 /** _.contains
 * Arguments:
@@ -257,16 +257,23 @@ for (var i = 0; i < array.length; i++){
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 _.map = function(collection, func){
-const output = [];
-if (Array.isArray(collection)){
-    for (let i = 0; i < collection.length; i++){
-        const result = func(collection[i], i, collection);
+    //create an output array
+    const output = [];
+    //determine if collection is an array
+    if (Array.isArray(collection)) {
+        for (let i = 0; i < collection.length; i++) {
+            output.push(func(collection[i], i, collection));
+        }
+    } else if (typeof collection === "object" && collection !== null) {
+        for (let key in collection) {
+            if (collection.hasOwnProperty(key)) {
+                output.push(func(collection[key], key, collection));
+            }
+        }
     }
-} else {
-   
+
+    return output;
 }
-return output;
-} 
 
 /** _.pluck
 * Arguments:
@@ -301,7 +308,29 @@ return output;
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
-
+/*_.every = function(collection, func){
+    if(Array.isArray(collection)){
+        //determine if no func was provided
+        if(func === undefined){
+            for (let i = 0; i < collection.length; i++){
+                //determine if current item is NOT truthy
+                if (collection[i]){
+                    return false;
+                }
+            }
+        } else { //else it's an object
+            for (let i = 0; i < collection.length; i++){
+                if (func(/current item/, /current index/, /collection/)){
+                    return false;
+                }
+            }
+    }
+} else {
+    
+}
+    return true;
+}
+//_.every([1, 2, 3], function(n){return n > 0});
 /** _.some
 * Arguments:
 *   1) A collection

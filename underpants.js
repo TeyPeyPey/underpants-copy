@@ -140,9 +140,11 @@ _.indexOf = function(array, value){
     for (var i = 0; i < array.length; i++){
         if (array[i] === value){
             return array[i];
-        } else (array[i] !== value) {
+       } else if (array[i] !== value) {
+            return 1;
+        } else if () {
             return -1;
-        }
+        } 
     }
 };
 

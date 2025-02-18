@@ -24,6 +24,7 @@ var _ = {};
 _.identity = function (value) {
     return value;
 };
+console.log(_.identity(5));
 
 /** _.typeOf
 * Arguments:
@@ -142,7 +143,7 @@ _.indexOf = function(array, value){
             return array[i];
        } else if (array[i] !== value) {
             return 1;
-        } else if () {
+        } else {
             return -1;
         } 
     }

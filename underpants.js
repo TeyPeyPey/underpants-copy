@@ -162,6 +162,15 @@ _.indexOf = function(array, value){
 *   2) what if no <value> is given?
 * Examples:
 *   _.contains([1,"two", 3.14], "two") -> true
+
+_.contains() = function (array, value) {
+    if (array.isArray(array).includes(value) && value === value) {
+        return true;
+    } else {
+        return false;
+    }
+};
+console.log([1, 5, 9, 20, 63], 2);
 */
 
 
@@ -179,6 +188,18 @@ _.indexOf = function(array, value){
 * Examples:
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
+
+_.each() = function(collection, func) {
+    if (Array.isArray(collection)) {
+        function(element, index, collection) {
+            else if (typeOf collection === 'object') {
+                return function(property, keys, collection)
+            }
+        }
+        return function
+    }
+};
+console.log(_.each());
 */
 
 
@@ -191,6 +212,9 @@ _.indexOf = function(array, value){
 * Examples:
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
+_.unique = function(array) {
+
+}
 
 
 /** _.filter
